@@ -1,0 +1,30 @@
+package com.example.hrudya.volleyphp;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+
+/**
+ * Created by hrudya on 29/1/18.
+ */
+
+
+public class Session {
+
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+    Context ctx;
+
+    public Session(Context ctx)
+    {
+        this.ctx  = ctx;
+        prefs = ctx.getSharedPreferences("abc", Context.MODE_PRIVATE);
+        editor = prefs.edit();
+    }
+    public void setLoggedin(boolean loggedin){
+        editor.putBoolean("loggedInmode",loggedin);
+        editor.commit();
+    }
+    public boolean loggedin(){
+        return prefs.getBoolean("loggedInmode",false);
+    }
+}
